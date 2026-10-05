@@ -1,0 +1,151 @@
+{
+	"assetNamespace": "fab",
+	"listing":
+	{
+		"averageRating": 5,
+		"createdAt": "",
+		"description": "<p>Machinery device for industrial visualizations. 4k textures.</p><p>3ds max 2022 + Corona renderer.</p>",
+		"isAiForbidden": false,
+		"isAiGenerated": false,
+		"lastUpdatedAt": "",
+		"listingType": "3d-model",
+		"media": "https://media.fab.com/image_previews/gallery_images/3481c214-3181-44ab-8f03-57e4721fc6c1/f3b22b6c-d2ac-42d1-a065-7240032b6746.jpg",
+		"publishedAt": "2025-02-13T14:30:17.204057Z",
+		"reviewCount": 2,
+		"thumbnail": "https://media.fab.com/image_previews/gallery_images/9415f4ad-8fba-446f-b700-e82423800579/b7d68512-ceff-4ba9-a85e-ecbb8e7f0a16.jpeg",
+		"title": "Industrial machine",
+		"uid": "553bd4eb-0134-4536-94e7-43da10a6d49e",
+		"updatedAt": "",
+		"user":
+		{
+			"coverImageUrl": "https://cdn1.epicgames.com/fab/seller/o-d183b0939b4dfb9580518b66690b87/backgroundImage/blob-1920x540-a0926ba3b8b7648e52713bf44c8c36a0.jpg",
+			"profileImageUrl": "https://cdn1.epicgames.com/fab/seller/o-d183b0939b4dfb9580518b66690b87/profileImage/blob-500x500-cf848bc158b09300f6a49d5a9ae44143.jpg",
+			"sellerName": "maxpsr",
+			"uid": "e3787aa8-dac0-471e-980a-0fe4cde1b284"
+		},
+		"tags": [
+			{
+				"name": "Machine",
+				"slug": "machine",
+				"uid": "01009560-ba6b-44e7-b717-c607fb05cfd6"
+			},
+			{
+				"name": "Machinery",
+				"slug": "machinery",
+				"uid": "1377c7cc-ca8e-4f45-ac06-2839ec113b36"
+			},
+			{
+				"name": "Pipe",
+				"slug": "pipe",
+				"uid": "2f70209b-3465-4dfc-9bfe-f8ec17f05edb"
+			},
+			{
+				"name": "Pump",
+				"slug": "pump",
+				"uid": "35f0db99-4fdf-4220-be88-0e757acccc8c"
+			},
+			{
+				"name": "Engine",
+				"slug": "engine",
+				"uid": "65e7c1f8-c4aa-4dc4-bc2d-566cb2ecda37"
+			},
+			{
+				"name": "Turbine",
+				"slug": "turbine",
+				"uid": "6e472c3d-c083-45ff-867a-78ab67140d91"
+			},
+			{
+				"name": "Motor",
+				"slug": "motor",
+				"uid": "a5d69015-83b1-4d3d-9a51-4d282f8d9ae7"
+			},
+			{
+				"name": "Industrial",
+				"slug": "industrial",
+				"uid": "bf46a0e3-cde2-44f8-858a-3e539cd8bba6"
+			},
+			{
+				"name": "Generator",
+				"slug": "generator",
+				"uid": "cb47d423-a811-4ab4-8598-5b4d462e1eba"
+			}
+		],
+		"category":
+		{
+			"name": "Electronics & Technology",
+			"path": "electronics-technology",
+			"slug": "electronics-technology",
+			"uid": "18e672da-2da2-4d1b-b0a1-b6a64f108c69"
+		},
+		"assetFormats": [
+			{
+				"assetFormatType":
+				{
+					"name": "FBX",
+					"groupName": "3D Exchange Formats",
+					"code": "fbx",
+					"icon": "cube",
+					"extensions": [
+						"fbx"
+					]
+				}
+			},
+			{
+				"assetFormatType":
+				{
+					"name": "Additional files",
+					"groupName": "Other Formats",
+					"code": "additional-files",
+					"icon": "file",
+					"extensions": [
+						"zip"
+					]
+				}
+			},
+			{
+				"assetFormatType":
+				{
+					"name": "Converted Files",
+					"groupName": "",
+					"code": "converted-files",
+					"icon": "cube",
+					"extensions": [
+						"gltf",
+						"glb",
+						"usdz"
+					]
+				}
+			},
+			{
+				"assetFormatType":
+				{
+					"name": "3ds Max",
+					"groupName": "3D DCC Formats",
+					"code": "3ds-max",
+					"icon": "3ds-max",
+					"extensions": [
+						"max"
+					]
+				}
+			}
+		],
+		"_PluginMetas":
+		{
+			"apiDataVersion": "0.0.1",
+			"entitlementUid": "e572274c-49cd-4767-948c-7a0a90c2c185",
+			"cacheSize": 0,
+			"downloaded": []
+		}
+	},
+	"target": "diskExport",
+	"quality": "",
+	"format": "fbx",
+	"fileId": "6f7f17d2-901c-43f9-af8b-d14bb1a21974",
+	"platformIncluded": "",
+	"distributionPointBaseUrls": [],
+	"distributionMethod": "",
+	"entitlementUid": "e572274c-49cd-4767-948c-7a0a90c2c185",
+	"invertedNormal": false,
+	"isConverted": false,
+	"isQuixel": false
+}

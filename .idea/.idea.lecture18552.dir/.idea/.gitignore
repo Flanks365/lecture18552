@@ -1,0 +1,19 @@
+# Unreal Engine
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+.vs/
+.vscode/
+
+# Rider / JetBrains
+.idea/
+*.sln
+*.suo
+*.user
+*.userosscache
+*.sln.iml
+
+# Unreal generated files
+*.VC.db
+*.VC.opendb
