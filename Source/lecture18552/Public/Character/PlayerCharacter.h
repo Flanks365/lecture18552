@@ -82,7 +82,8 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Energy")
 	float Energy = 20.0f;
 
-public:
+private:
+	FTimerHandle PlayerTimerHandle;
 	
 	
 };

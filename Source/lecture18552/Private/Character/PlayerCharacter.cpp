@@ -11,6 +11,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Interactable/Crate.h"
 #include "Interactable/Safe.h"
+#include "TimerManager.h"
 #include "Interactable/Shrine.h"
 
 // Sets default values
@@ -202,6 +203,19 @@ void APlayerCharacter::onJumpComplete(const FInputActionValue& Value)
 		if (Energy > 0.0f)
 		{
 			pc->addInputFlyingContext();
+			
+			
+			
+			GetWorldTimerManager().SetTimer(PlayerTimerHandle,[this,Value](){
+				
+			RestoreEnergy(-1.0f);
+				
+			if (Energy <= 0.0f)
+			{
+				Land(Value);
+			}
+				
+		}, 0.2f, true);
 		}
 	}
 }
@@ -234,6 +248,8 @@ void APlayerCharacter::Land(const FInputActionValue& Value)
 	{
 		pc->removeInputFlyingContext();
 	}
+	
+	GetWorldTimerManager().ClearTimer(PlayerTimerHandle);
 }
 
 // Called every frame
