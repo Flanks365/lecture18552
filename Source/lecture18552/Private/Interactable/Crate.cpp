@@ -3,6 +3,7 @@
 
 #include "Interactable/Crate.h"
 
+#include "Components/InventoryComponent.h"
 #include "Components/PointLightComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 #include "Components/StaticMeshComponent.h"
@@ -19,9 +20,18 @@ ACrate::ACrate()
 
 }
 
-void ACrate::Interact(UPrimitiveComponent* HitComponent)
+void ACrate::Interact(AActor* Interactor, UPrimitiveComponent* HitComponent)
 {
+	if (!Interactor)
+		return;
+	
+	UInventoryComponent* Inventory = Interactor->FindComponentByClass<UInventoryComponent>();
+	
+	if (!Inventory) return;
+	
+	Inventory->AddItem(Potion);
 	open();
+	
 }
 
 void ACrate::open()

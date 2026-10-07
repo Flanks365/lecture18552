@@ -3,6 +3,7 @@
 
 #include "Interactable/Shrine.h"
 
+#include "Components/InventoryComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "Components/PointLightComponent.h"
 #include "Engine/Engine.h"
@@ -21,9 +22,25 @@ AShrine::AShrine()
 	bIsActive = false;
 }
 
-void AShrine::Interact(UPrimitiveComponent* HitComponent)
+void AShrine::Interact(AActor* Interactor, UPrimitiveComponent* HitComponent)
 {
-	Activate();
+	if (bIsActive || !Interactor)return;
+	
+	UInventoryComponent* Inventory = Interactor->FindComponentByClass<UInventoryComponent>();
+	
+	if(!Inventory) return;
+	
+	if (RequiredRelic && Inventory->GetItems().Contains(RequiredRelic)){
+		Inventory->RemoveItem(RequiredRelic);
+		Activate();
+	} else
+	{
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Red, TEXT("You need the required relic to activate this shrine."));
+		}
+	}
+	
 }
 
 void AShrine::Activate()

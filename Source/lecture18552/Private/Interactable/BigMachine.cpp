@@ -18,7 +18,7 @@ void ABigMachine::poof()
 	BaseMesh->SetVisibility(false);
 }
 
-void ABigMachine::Interact(UPrimitiveComponent* HitComponent)
+void ABigMachine::Interact(AActor* Interactor, UPrimitiveComponent* HitComponent)
 {
 	poof();
 }

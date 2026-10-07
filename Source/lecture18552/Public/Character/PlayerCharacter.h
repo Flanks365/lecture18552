@@ -7,6 +7,8 @@
 #include "PlayerCharacter.generated.h"
 
 
+class UItemDataAsset;
+class UInventoryComponent;
 struct FInputActionValue;
 class UInputAction;
 class UCameraComponent;
@@ -63,9 +65,13 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Input Action")
 	TObjectPtr<UInputAction> InteractAction;
 	
+	UPROPERTY(EditAnywhere, Category = "Input Action")
+	TObjectPtr<UInputAction> UseItemAction;
+	
 	void Look(const FInputActionValue& Value);
 	void Move(const FInputActionValue& Value);
 	
+	void UseItem(const FInputActionValue& Value);
 	void Interact(const FInputActionValue& Value);
 	
 	void onJumpStart(const FInputActionValue& Value);
@@ -81,6 +87,12 @@ protected:
 	
 	UPROPERTY(EditAnywhere, Category = "Energy")
 	float Energy = 20.0f;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	TObjectPtr<UInventoryComponent> InventoryComponent;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Usable Item")
+	TObjectPtr<UItemDataAsset> PotionItem;
 
 private:
 	FTimerHandle PlayerTimerHandle;

@@ -12,6 +12,8 @@
 #include "Interactable/Crate.h"
 #include "Interactable/Safe.h"
 #include "TimerManager.h"
+#include "Components/InventoryComponent.h"
+#include "Data/ItemDataAsset.h"
 #include "Interactable/Shrine.h"
 
 // Sets default values
@@ -28,6 +30,8 @@ APlayerCharacter::APlayerCharacter()
 	FollowCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("FollowCamera"));
 	FollowCamera->SetupAttachment(CameraBoom, USpringArmComponent::SocketName);
 	FollowCamera->bUsePawnControlRotation = false;
+	
+	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InventoryComponent"));
 }
 
 // Called to bind functionality to input
@@ -54,6 +58,9 @@ void APlayerCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCom
 		
 		//interact
 		EnchancedInputComponent->BindAction(InteractAction, ETriggerEvent::Completed, this, &APlayerCharacter::Interact);
+		
+		//use item
+		EnchancedInputComponent->BindAction(UseItemAction, ETriggerEvent::Completed, this, &APlayerCharacter::UseItem);
 		
 	}
 }
@@ -99,6 +106,26 @@ void APlayerCharacter::Move(const FInputActionValue& Value)
 	
 }
 
+void APlayerCharacter::UseItem(const FInputActionValue& Value)
+{
+	if (InventoryComponent->GetItems().Contains(PotionItem))
+	{
+		RestoreEnergy(PotionItem->ItemData.RestoreAmount);
+		InventoryComponent->RemoveItem(PotionItem);
+		
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Green, FString::Printf(TEXT("Used Potion: Restored %f Energy"), PotionItem->ItemData.RestoreAmount));
+		}
+	} else
+	{
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, TEXT("No Potion in Inventory"));
+		}
+	}
+}
+
 void APlayerCharacter::Interact(const FInputActionValue& Value)
 {
 	FVector StartLocation;
@@ -140,7 +167,7 @@ void APlayerCharacter::Interact(const FInputActionValue& Value)
 	
 	if (IInteractable* Interactable = Cast<IInteractable>(HitActor))
 	{
-		Interactable->Interact(HitComponent);
+		Interactable->Interact(this, HitComponent);
 	}
 	
 	// if (AShrine* Shrine = Cast<AShrine>(HitActor))

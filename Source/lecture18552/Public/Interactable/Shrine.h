@@ -7,6 +7,7 @@
 #include "GameFramework/Actor.h"
 #include "Shrine.generated.h"
 
+class UItemDataAsset;
 class UPointLightComponent;
 
 UCLASS()
@@ -18,7 +19,7 @@ public:
 	// Sets default values for this actor's properties
 	AShrine();
 	
-	virtual void Interact(UPrimitiveComponent* HitComponent) override;
+	virtual void Interact(AActor* Interactor, UPrimitiveComponent* HitComponent) override;
 	
 	void Activate();
 	
@@ -31,6 +32,9 @@ protected:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<UPointLightComponent> ShrineLight;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Requirement")
+	TObjectPtr<UItemDataAsset> RequiredRelic;
 
 
 };

@@ -7,6 +7,8 @@
 #include "GameFramework/Actor.h"
 #include "Crate.generated.h"
 
+class UItemDataAsset;
+
 UCLASS()
 class LECTURE18552_API ACrate : public AActor, public IInteractable
 {
@@ -16,7 +18,7 @@ public:
 	// Sets default values for this actor's properties
 	ACrate();
 	
-	virtual void Interact(UPrimitiveComponent* HitComponent) override;
+	virtual void Interact(AActor* Interactor, UPrimitiveComponent* HitComponent) override;
 	void open();
 	
 protected:
@@ -25,5 +27,8 @@ protected:
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<USkeletalMeshComponent> Lid;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "item")
+	TObjectPtr<UItemDataAsset> Potion;
 	
 };

@@ -16,7 +16,7 @@ class LECTURE18552_API ABigMachine : public AActor, public IInteractable
 public:
 	// Sets default values for this actor's properties
 	ABigMachine();
-	virtual void Interact(UPrimitiveComponent* HitComponent) override;
+	virtual void Interact(AActor* Interactor, UPrimitiveComponent* HitComponent) override;
 	void poof();
 
 protected:

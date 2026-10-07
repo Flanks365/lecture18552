@@ -3,6 +3,7 @@
 
 #include "Interactable/Safe.h"
 
+#include "Components/InventoryComponent.h"
 #include "Components/SkeletalMeshComponent.h"
 
 #include "Components/StaticMeshComponent.h"
@@ -18,11 +19,17 @@ ASafe::ASafe()
 	LootMesh->SetupAttachment(RootComponent);
 }
 
-void ASafe::Interact(UPrimitiveComponent* HitComponent)
+void ASafe::Interact(AActor* Interactor, UPrimitiveComponent* HitComponent)
 {
 	if (HitComponent == LootMesh)
 	{
 		CollectLoot();
+		
+		if (UInventoryComponent* PlayerInventory = Interactor->FindComponentByClass<UInventoryComponent>())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Got Loot"));
+			PlayerInventory->AddItem(LootItem);
+		}
 	}
 	else if (HitComponent == BaseMesh)
 	{
@@ -47,6 +54,9 @@ void ASafe::CollectLoot()
 	{
 		GEngine->AddOnScreenDebugMessage(-1, 3.0f, FColor::Green, TEXT("Loot collected!"));
 	}
+	
+	LootMesh->DestroyComponent();
+	LootMesh = nullptr;
 }
 
 

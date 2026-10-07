@@ -7,6 +7,7 @@
 #include "GameFramework/Actor.h"
 #include "Safe.generated.h"
 
+class UItemDataAsset;
 UCLASS()
 class LECTURE18552_API ASafe : public AActor, public IInteractable
 {
@@ -16,7 +17,7 @@ public:
 	// Sets default values for this actor's properties
 	ASafe();
 	
-	virtual void Interact(UPrimitiveComponent* HitComponent) override;
+	virtual void Interact(AActor* Interactor, UPrimitiveComponent* HitComponent) override;
 	
 	void Open();
 	void CollectLoot();
@@ -28,5 +29,8 @@ protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 	TObjectPtr<USkeletalMeshComponent> BaseMesh;
+	
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Loot")
+	TObjectPtr<UItemDataAsset> LootItem;
 	
 };
