@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Projectile/Projectile.h"
 #include "BaseCharacter.generated.h"
 
 
@@ -15,6 +16,12 @@ class LECTURE18552_API ABaseCharacter : public ACharacter
 public:
 	// Sets default values for this character's properties
 	ABaseCharacter();
+	
+	UFUNCTION(BlueprintCallable, Category = "Combat")
+	void SpawnProjectile(FName SocketName, TSubclassOf<AProjectile> ProjectileClass);
+	
+	UFUNCTION(BlueprintCallable, Category = "Combat")
+	void LaunchProjectile();
 
 protected:
 	// Called when the game starts or when spawned
@@ -23,6 +30,10 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	
+private:
+	UPROPERTY()
+	AProjectile* ActiveSpawnedProjectile;
 
 	
 };
